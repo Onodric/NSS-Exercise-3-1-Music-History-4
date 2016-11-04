@@ -1,24 +1,95 @@
 "use strict";
+const INSERTPLACE = document.getElementById("view-songs");
+let JSON_AVAILABLE = 2;
 
-// order of operations:
-  // event listener on add page
-    // add json calls 
+// Choose a "page" listeners
+document.getElementById("viewSongs").addEventListener("click", function(){
+  event.target.parentElement.parentElement.children[0].children[0].classList.remove("selected");
+  event.target.parentElement.parentElement.children[1].children[0].classList.remove("selected");
+  event.target.parentElement.parentElement.children[2].children[0].classList.remove("selected");
+  event.target.classList.toggle("selected");
+  document.getElementById("chooser").classList.remove("hidden");
+  document.getElementById("view-songs").classList.remove("hidden");
+  document.getElementById("user-profile").classList.remove("hidden");
+  document.getElementById("user-profile").classList.add("hidden");
+  document.getElementById("song-adder").classList.remove("hidden");
+  document.getElementById("song-adder").classList.add("hidden");
+});
 
+document.getElementById("addSongs").addEventListener("click", function(){
+  event.target.parentElement.parentElement.children[0].children[0].classList.remove("selected");
+  event.target.parentElement.parentElement.children[1].children[0].classList.remove("selected");
+  event.target.parentElement.parentElement.children[2].children[0].classList.remove("selected");
+  event.target.classList.toggle("selected");
+  document.getElementById("chooser").classList.remove("hidden");
+  document.getElementById("chooser").classList.add("hidden");
+  document.getElementById("view-songs").classList.remove("hidden");
+  document.getElementById("view-songs").classList.add("hidden");
+  document.getElementById("user-profile").classList.remove("hidden");
+  document.getElementById("user-profile").classList.add("hidden");
+  document.getElementById("song-adder").classList.remove("hidden");
+});
+
+document.getElementById("userProfile").addEventListener("click", function(){
+  event.target.parentElement.parentElement.children[0].children[0].classList.remove("selected");
+  event.target.parentElement.parentElement.children[1].children[0].classList.remove("selected");
+  event.target.parentElement.parentElement.children[2].children[0].classList.remove("selected");
+  event.target.classList.toggle("selected");
+  document.getElementById("chooser").classList.remove("hidden");
+  document.getElementById("chooser").classList.add("hidden");
+  document.getElementById("view-songs").classList.remove("hidden");
+  document.getElementById("view-songs").classList.add("hidden");
+  document.getElementById("user-profile").classList.remove("hidden");
+  document.getElementById("song-adder").classList.remove("hidden");
+  document.getElementById("song-adder").classList.add("hidden");
+});
+
+//Now add event listener to gather added data
+  // pass to MH.addSong(obj)
+  // pass to mh.writeSong(obj, index)
+  // pass to MH.writeSelect()
+
+document.getElementById("add-btn").addEventListener("click", function(){
+  event.preventDefault();
+  let newSong = {};
+  // newSong = '<article class="card"><h2 class="song-title">'
+  newSong.title = document.getElementById("add-title").value;
+  // newSong += '</h2><h5 class="duration">';
+  newSong.duration = document.getElementById("add-duration").value;
+  // newSong += '</h5><ul><li class="descriptor">';
+  newSong.artist = document.getElementById("add-artist").value;
+  // newSong += '</li><li class="descriptor">';
+  newSong.album = document.getElementById("add-album").value;
+  // newSong += '</li><li class="descriptor">';
+  newSong.genre = document.getElementById("add-genre").value;
+  // newSong += '</li></ul></article>';
+  MusicHistory.addSong(newSong);
+  MusicHistory.writeSong(newSong, INSERTPLACE);
+  MusicHistory.writeSelect();
+});
 
 //Here we invoke the JSON loads,
   // which calls the module to write the JSON into the internal array
-  // which calls the internal array push on each member of the JSON file.
-// Then we call the dom array writer
-  // it calls the song builder and
-  // the select list builder
-    // which calls the option builder
+    // which calls the internal array push on each member of the JSON file.
+    // And then calls the dom array writer
+      // Which calls the song builder and
+      // the select list builder
+        // which calls the option builder
+    // and adds a button (addMoreSongs) to the bottom
 
 MusicHistory.loadJSON("data/songs.JSON", MusicHistory.addArray);
-MusicHistory.loadJSON("data/more-songs.JSON", MusicHistory.addArray);
 
-// MusicHistory.writeArray(MusicHistory.getSongArray());
+function addBtnEar(){
+  document.getElementById("moreSongs").addEventListener("click", function(event) {
+    loadMoreNow(event);
+  });
+}
 
-
+function loadMoreNow(event){
+  console.log("clicky: ", event.target);
+  event.target.remove();
+  MusicHistory.loadJSON("data/more-songs.JSON", MusicHistory.addArray);
+}
 
 // THIS SHOULD BE THE MAIN HANDLER.
 

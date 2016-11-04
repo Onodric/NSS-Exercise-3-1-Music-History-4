@@ -14,7 +14,7 @@ var MusicHistory = (function(oldMH){
     });
   
     myRequest.addEventListener("load", function () {
-      let songsLoaded = JSON.parse(this.response);
+      let songsLoaded = JSON.parse(this.response).songs;
       cbFunc(songsLoaded);
     });  
   };

@@ -41,26 +41,43 @@ var MusicHistory = (function(oldMH){
     newCard.append(newElement1);
 // inserts the card at the end of Parent
     document.getElementById('view-songs').append(newCard);
+// add an event listener!
+    document.getElementById(index).addEventListener("click", function(event){
+      MusicHistory.deleSong(event);
+    });
   };
 
   oldMH.writeArray = function(arr){
+    INSERTPLACE.innerHTML = '';
+    JSON_AVAILABLE--;
 // Calls writesong in a loop over the MusicHistory.getsongArray()
     for (let i = 0; i < arr.length; i++){
       MusicHistory.writeSong(arr[i], i);
-// calls writeSelect for each song
-      MusicHistory.writeSelect(arr[i]);
+    }
+// Call writeSelect
+      MusicHistory.writeSelect();
+// Add more button at the bottom of dom if there are more JSONs
+    if (JSON_AVAILABLE > 0){
+      let newEl = document.createElement("button");
+      newEl.setAttribute("id", "moreSongs");
+      newEl.setAttribute("class", "morer");
+      newEl.innerHTML = "Add More Songs from URL...";
+      document.getElementById("view-songs").append(newEl);
+      addBtnEar();
     }
   };
 
   oldMH.deleSong = function(event){
-    let tempArr = document.getElementsByTagName('button');    
+    let tempArr = document.getElementsByClassName('deleter');    
 // Deletes from array (calls removeSong)
     MusicHistory.removeSong(event);
 // Deletes event.target.parent of button
     event.target.parentElement.remove();
 // Refactors button id's
-    for (let i = 0; i < tempArr.length; i++){
-      tempArr[i].attr('id', i);
+    console.log("the buttons: ", tempArr);
+    console.log("Start i here: ", parseInt(event.target.id));
+    for (let i = parseInt(event.target.id); i < tempArr.length; i++){
+      tempArr[i].setAttribute('id', i);
     }
   };
 
@@ -69,6 +86,28 @@ var MusicHistory = (function(oldMH){
     let albumArr = MusicHistory.getSelectList("album");
     let artistArr = MusicHistory.getSelectList("artist");
     let genreArr = MusicHistory.getSelectList("genre");
+// Start from scratch
+    let tempAlbumSel = document.getElementById("album");
+    let tempArtistSel = document.getElementById("artist");
+    let tempGenreSel = document.getElementById("genre");
+    
+    tempAlbumSel.innerHTML = '';
+    let newEl = document.createElement("option");
+    newEl.classList.add("disabled", "selected");
+    newEl.innerHTML = "Album";
+    tempAlbumSel.append(newEl);
+    
+    tempArtistSel.innerHTML = '';
+    newEl = document.createElement("option");
+    newEl.classList.add("disabled", "selected");
+    newEl.innerHTML = "Artist";
+    tempArtistSel.append(newEl);
+
+    tempGenreSel.innerHTML = '';
+    newEl = document.createElement("option");
+    newEl.classList.add("disabled", "selected");
+    newEl.innerHTML = "Genre";
+    tempGenreSel.append(newEl);
 // Loop through each array, and get the results
     for (let j = 0; j < albumArr.length; j++){
 // Call buildOption
@@ -85,9 +124,10 @@ var MusicHistory = (function(oldMH){
   };
 
   oldMH.buildOption = function(string, listName, id){
-    const INJECT = document.getElementById(id);
-    console.log("Getting: ", string, listName, id);
-    console.log("False Shouldn't run ", !listName.includes(string));
+    let INJECT = document.getElementById(id);
+    artist = [];
+    album = [];
+    genre = [];
     if (!listName.includes(string)){
       listName.push(string);
       let newOpt = document.createElement("option");
@@ -99,7 +139,7 @@ var MusicHistory = (function(oldMH){
 
   oldMH.cullOptions = function(str, select){
 // culls unused items from one select list at a time
-    if(!MusicHistory.getSelectList(select).contains(str)){
+    if(!MusicHistory.getSelectList(select).includes(str)){
       document.getElementById(str).remove();
     }
   };

@@ -11,7 +11,7 @@ var MusicHistory = (function(oldMH){
         tempArr.push(tempSongs[i][prop]);
       }
     }
-    // returns an array of the options needed...
+// returns an array of the options needed...
     return tempArr;
   };
   

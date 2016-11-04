@@ -65,17 +65,25 @@ fieldset label {
 
 /* CLASSES ****************************************** */
 
-
+.morer,
 .deleter {
-  position: inherit;
   margin: 1em;
-  margin-bottom: 3em;
-  float: right;
   border-radius:.2em;
   background: #ecdaad;
   box-shadow: 0 3px 5px rgba(30,00,30,.7);
-  top: .5em;
 }
+
+.deleter {
+  top: .5em;
+  margin-bottom: 3em;
+  float: right;
+}
+
+.morer {
+  position: relative;
+  bottom: 0;
+}
+
 
 .song-title {
   display: inline-block;
