@@ -1,10 +1,10 @@
 "use strict";
 var MusicHistory = (function(oldMH){
-  let songArray = [];
+  var songArray = [];
 
   oldMH.getSongArray = function(){
 // Returns the internal array of songs
-    return songArray;
+    return Array.from(songArray);
   };
 
   oldMH.addSong = function (obj) {
@@ -12,11 +12,13 @@ var MusicHistory = (function(oldMH){
     songArray.push(obj);
   };
 
-  oldMH.addArray = function (arr) {
+  oldMH.addArray = function (obj) {
+    let tempSongs = obj.songs;
 // This is the callback function! Calls MusicHistory.addSong in a loop
-    for (let i = 0; i < arr.length; i++ ){
-      MusicHistory.addSong(arr[i]);
+    for (let i = 0; i < tempSongs.length; i++ ){
+      MusicHistory.addSong(tempSongs[i]);
     }
+    MusicHistory.writeArray(tempSongs);
   };
 
   oldMH.removeSong = function (event) {

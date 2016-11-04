@@ -1,5 +1,8 @@
 "use strict";
 var MusicHistory = (function(oldMH){
+  let artist = [];
+  let album = [];
+  let genre = [];
 
   oldMH.writeSong= function(obj, index){
 // Writes the correct card by getting info from obj
@@ -7,33 +10,33 @@ var MusicHistory = (function(oldMH){
     let newCard = document.createElement("article");
     let newElement1 = document.createElement('h2');
 
-    newCard.addClass('card');
+    newCard.classList.add('card');
 // Create unique id for the card using title
-    newElement1.attr('id', obj.title + index);
+    newElement1.setAttribute('id', obj.title + index);
     newElement1.innerHTML = obj.title;
     newCard.append(newElement1);
     newElement1 = document.createElement('h5');
-    newElement1.addClass('duration');
+    newElement1.classList.add('duration');
     newElement1.innerHTML = obj.duration;
     newCard.append(newElement1);
     newElement1 = document.createElement('ul');
     newElement2 = document.createElement('li');
-    newElement2.addClass('descriptor');
+    newElement2.classList.add('descriptor');
     newElement2.innerHTML = obj.artist;
     newElement1.append(newElement2);
     newElement2 = document.createElement('li');
-    newElement2.addClass('descriptor');
+    newElement2.classList.add('descriptor');
     newElement2.innerHTML = obj.album;
     newElement1.append(newElement2);
     newElement2 = document.createElement('li');
-    newElement2.addClass('descriptor');
+    newElement2.classList.add('descriptor');
     newElement2.innerHTML = obj.genre;
     newElement1.append(newElement2);
     newCard.append(newElement1);
     newElement1 = document.createElement("button");
-    newElement1.addClass('deleter');
+    newElement1.classList.add('deleter');
 // Create button id based on index (in the main array)
-    newElement1.attr('id', 'index');
+    newElement1.setAttribute('id', index);
     newElement1.innerHTML = "Delete";
     newCard.append(newElement1);
 // inserts the card at the end of Parent
@@ -45,7 +48,7 @@ var MusicHistory = (function(oldMH){
     for (let i = 0; i < arr.length; i++){
       MusicHistory.writeSong(arr[i], i);
 // calls writeSelect for each song
-      MusicHistory.writeSelect(arr[i]);      
+      MusicHistory.writeSelect(arr[i]);
     }
   };
 
@@ -66,23 +69,32 @@ var MusicHistory = (function(oldMH){
     let albumArr = MusicHistory.getSelectList("album");
     let artistArr = MusicHistory.getSelectList("artist");
     let genreArr = MusicHistory.getSelectList("genre");
-    let arrArr = [albumArr, artistArr, genreArr];
-    let selectArr = [ "album", "artist", "genre"];
 // Loop through each array, and get the results
-    for (let i = 0; i < arrArr.length; i++){
-      for (let j = 0; j < arrArr[i].length; j++){
+    for (let j = 0; j < albumArr.length; j++){
 // Call buildOption
-        MusicHistory.buildOption(arrArr[i][j], selectArr[i]);
-      }
+      MusicHistory.buildOption(albumArr[j], album, "album");
+    }
+    for (let j = 0; j < artistArr.length; j++){
+// Call buildOption
+      MusicHistory.buildOption(artistArr[j], artist, "artist");
+    }
+    for (let j = 0; j < genreArr.length; j++){
+// Call buildOption
+      MusicHistory.buildOption(genreArr[j], genre, "genre");
     }
   };
 
-  oldMH.buildOption = function(string, listName){
-    let newOpt = document.createElement("option");
-    let inject = document.getElementById(listName);
-    newOpt.innerHTML = string;
+  oldMH.buildOption = function(string, listName, id){
+    const INJECT = document.getElementById(id);
+    console.log("Getting: ", string, listName, id);
+    console.log("False Shouldn't run ", !listName.includes(string));
+    if (!listName.includes(string)){
+      listName.push(string);
+      let newOpt = document.createElement("option");
+      newOpt.innerHTML = string;
 // Add to correct select list
-    inject.append(newOpt);
+      INJECT.append(newOpt);
+    }
   };
 
   oldMH.cullOptions = function(str, select){

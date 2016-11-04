@@ -21,48 +21,26 @@
       <div class="sidebar">
         <label for="song-length">Song Length:</label>
         <input type="range" name="song-length" id="song-length" class="sidebar-range">
-        <!-- <label for="artist">Artist:</label> -->
+
         <select id="artist" name="artist" size="1">
           <option disabled selected>Artist</option>
-          <!-- <option>Phish</option>
-          <option>Amon Tobin</option>
-          <option>Beastie Boys</option>
-          <option>Medeski Martin &amp; Wood</option>
-          <option>The Beatles</option> -->
         </select>
-        <!-- <label for="album">Album:</label> -->
+
         <select id="album" name="album" size="1">
           <option disabled selected>Album</option>
-          <!-- <option>Junta</option>
-          <option>Out From Out Where</option>
-          <option>Check Your Head</option>
-          <option>ShackMan</option>
-          <option>Revolver</option> -->
         </select>
+        
         <select id="genre" name="genre" size="1">
           <option disabled selected>Genre</option>          
         </select>
-        <!-- <label for="genre">Genre</label>
-        <fieldset id="genre">
-          <input type="checkbox" id="rock" value="rock" name="genre">      
-            <label for="rock">Rock</label>
-          <input type="checkbox" id="classical" value="classical" name="genre">      
-            <label for="classical">Classical</label>
-          <input type="checkbox" id="pop" value="pop" name="genre">      
-            <label for="pop">Pop</label>
-          <input type="checkbox" id="jazz" value="jazz" name="genre">      
-            <label for="jazz">Jazz</label>
-          <input type="checkbox" id="blues" value="blues" name="genre">      
-            <label for="blues">Blues</label>
-          <input type="checkbox" id="hiphop" value="hiphop" name="genre">      
-            <label for="hiphop">Hip-hop</label>
-        </fieldset> -->
+
         <button type="submit" class="btn-filter">Filter</button>
       </div><!-- end of .sidebar -->
     </aside><!-- end of #chooser -->
     
     <section id="view-songs">
-      
+
+      <button>More -->></button>      
     </section><!-- end of #view-songs -->
 
     <section id="song-adder" class="hidden">
@@ -74,15 +52,7 @@
         <input type="text" name="add-duration" id="add-duration" placeholder="Song Duraton [hh:]mm:ss">
         <input type="text" name="add-artist" id="add-artist" placeholder="Artist">
         <input type="text" name="add-album" id="add-album" placeholder="Album">
-        <select name="add-genre" id="add-genre">
-          <option value="placeholder" selected disabled>Genre</option>
-          <option value="Rock">Rock</option>
-          <option value="Classical">Classical</option>
-          <option value="Pop">Pop</option>
-          <option value="Jazz">Jazz</option>
-          <option value="Blues">Blues</option>
-          <option value="Hip-hop">Hip-Hop</option>
-        </select>
+        <input type="text" name="add-genre" id="add-genre" placeholder="Genre">
         <button id="add-btn">Add Song</button>
       </form>
     </section><!-- end of #song-adder -->
@@ -91,6 +61,7 @@
       <p>I am a generic User Profile</p>
     </section><!-- end of #user-profile -->
   </main>
+  
   <script src="javascripts/shredder.js"></script>
   <script src="javascripts/mailRoom.js"></script>
   <script src="javascripts/dataParser.js"></script>

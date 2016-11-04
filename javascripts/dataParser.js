@@ -7,7 +7,7 @@ var MusicHistory = (function(oldMH){
     let tempArr = [];
     let tempSongs = MusicHistory.getSongArray();
     for (let i = 0; i < tempSongs.length; i++){
-      if (!tempArr.contains(tempSongs[i][prop])){
+      if (!tempArr.includes(tempSongs[i][prop])){
         tempArr.push(tempSongs[i][prop]);
       }
     }

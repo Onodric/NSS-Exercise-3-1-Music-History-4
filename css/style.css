@@ -417,11 +417,24 @@ fieldset label {
   font-weight: normal; }
 
 /* CLASSES ****************************************** */
+.deleter {
+  position: inherit;
+  margin: 1em;
+  margin-bottom: 3em;
+  float: right;
+  border-radius: .2em;
+  background: #ecdaad;
+  box-shadow: 0 3px 5px rgba(30, 0, 30, 0.7);
+  top: .5em; }
+
 .song-title {
   display: inline-block; }
 
 .duration {
-  float: right; }
+  width: 9%;
+  display: inline-block;
+  margin: 0;
+  text-align: right; }
 
 .selected {
   text-decoration: none;
@@ -435,6 +448,13 @@ fieldset label {
   margin: 0 auto;
   padding-top: 1.5em;
   border-bottom: 3px solid rgba(100, 100, 100, 0.5); }
+
+.card h2 {
+  width: 90%;
+  display: inline-block; }
+
+.card ul {
+  display: inline-block; }
 
 .card li {
   padding: 0 1em 0 1em; }
