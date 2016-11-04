@@ -1,10 +1,9 @@
-// THIS SHOULD GET SONG DATA from JSON. Nothing else.
-// PASS IT: DataURL as string and a callbackFn
-// OFFER IT TO: the internal array holder and dom builder
 "use strict";
-
+// THIS SHOULD GET SONG DATA from JSON. Nothing else.
 var MusicHistory = (function(oldMH){
 
+// PASS IT: DataURL as string and a callbackFn
+// OFFER IT TO: the internal array holder and dom builder
   oldMH.loadJSON = function(jsonURL, cbFunc){
 
     let myRequest = new XMLHttpRequest();
@@ -12,7 +11,7 @@ var MusicHistory = (function(oldMH){
     myRequest.send();
 
     myRequest.addEventListener("error", function () {
-      alert("There was an error:", event.target)
+      alert("There was an error:", event.target);
     });
   
     myRequest.addEventListener("load", function () {

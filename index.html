@@ -21,25 +21,28 @@
       <div class="sidebar">
         <label for="song-length">Song Length:</label>
         <input type="range" name="song-length" id="song-length" class="sidebar-range">
-        <label for="artist">Artist:</label>
+        <!-- <label for="artist">Artist:</label> -->
         <select id="artist" name="artist" size="1">
-          <option disabled selected value>Options</option>
-          <option>Phish</option>
+          <option disabled selected>Artist</option>
+          <!-- <option>Phish</option>
           <option>Amon Tobin</option>
           <option>Beastie Boys</option>
           <option>Medeski Martin &amp; Wood</option>
-          <option>The Beatles</option>
+          <option>The Beatles</option> -->
         </select>
-        <label for="album">Album:</label>
+        <!-- <label for="album">Album:</label> -->
         <select id="album" name="album" size="1">
-          <option disabled selected value>Options</option>
-          <option>Junta</option>
+          <option disabled selected>Album</option>
+          <!-- <option>Junta</option>
           <option>Out From Out Where</option>
           <option>Check Your Head</option>
           <option>ShackMan</option>
-          <option>Revolver</option>
+          <option>Revolver</option> -->
         </select>
-        <label for="genre">Genre</label>
+        <select id="genre" name="genre" size="1">
+          <option disabled selected>Genre</option>          
+        </select>
+        <!-- <label for="genre">Genre</label>
         <fieldset id="genre">
           <input type="checkbox" id="rock" value="rock" name="genre">      
             <label for="rock">Rock</label>
@@ -53,7 +56,7 @@
             <label for="blues">Blues</label>
           <input type="checkbox" id="hiphop" value="hiphop" name="genre">      
             <label for="hiphop">Hip-hop</label>
-        </fieldset>
+        </fieldset> -->
         <button type="submit" class="btn-filter">Filter</button>
       </div><!-- end of .sidebar -->
     </aside><!-- end of #chooser -->
@@ -64,6 +67,9 @@
 
     <section id="song-adder" class="hidden">
       <form>
+<!-- Add the ability to add a json -->
+<!-- input type text placeholder Enter the location of a valid song list (JSON) -->
+<!-- ADD JSON Btn -->
         <input type="text" name="add-title" id="add-title" placeholder="Song Title">
         <input type="text" name="add-duration" id="add-duration" placeholder="Song Duraton [hh:]mm:ss">
         <input type="text" name="add-artist" id="add-artist" placeholder="Artist">
@@ -85,8 +91,11 @@
       <p>I am a generic User Profile</p>
     </section><!-- end of #user-profile -->
   </main>
-  <script src="javascripts/songRequest.js"></script>
-  <script src="javascripts/oldMain.js"></script>
+  <script src="javascripts/shredder.js"></script>
+  <script src="javascripts/mailRoom.js"></script>
+  <script src="javascripts/dataParser.js"></script>
+  <script src="javascripts/domGuy.js"></script>
+  <script src="javascripts/dataRequester.js"></script>
   <script src="javascripts/main.js"></script>
 </body>
 </html>

@@ -49,7 +49,6 @@ var insertPlace = document.getElementById("view-songs");
 var songList = '';
 
 document.getElementById("add-btn").addEventListener("click", function(){
-// SAMPLE CARD FOLLOWS
   event.preventDefault();
   var newSong = {};
   // newSong = '<article class="card"><h2 class="song-title">'
